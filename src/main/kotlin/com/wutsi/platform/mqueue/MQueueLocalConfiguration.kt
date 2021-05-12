@@ -1,4 +1,4 @@
-package com.wutsi.blog.config
+package com.wutsi.platform.mqueue
 
 import com.wutsi.stream.Event
 import com.wutsi.stream.EventHandler

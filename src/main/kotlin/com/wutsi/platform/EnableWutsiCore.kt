@@ -1,9 +1,9 @@
 package com.wutsi.platform
 
-import com.wutsi.blog.config.MQueueLocalConfiguration
-import com.wutsi.blog.config.MQueueRabbitMQConfiguration
 import com.wutsi.platform.cache.CacheLocalConfiguration
 import com.wutsi.platform.cache.CacheMemcachedConfiguration
+import com.wutsi.platform.mqueue.MQueueLocalConfiguration
+import com.wutsi.platform.mqueue.MQueueRabbitMQConfiguration
 import com.wutsi.platform.security.WutsiSecurityConfiguration
 import com.wutsi.platform.site.WutsiSiteConfiguration
 import com.wutsi.platform.tracing.WutsiTracingConfiguration

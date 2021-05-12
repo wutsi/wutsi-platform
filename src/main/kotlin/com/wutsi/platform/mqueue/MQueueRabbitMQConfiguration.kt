@@ -1,4 +1,4 @@
-package com.wutsi.blog.config
+package com.wutsi.platform.mqueue
 
 import com.rabbitmq.client.Channel
 import com.rabbitmq.client.ConnectionFactory
