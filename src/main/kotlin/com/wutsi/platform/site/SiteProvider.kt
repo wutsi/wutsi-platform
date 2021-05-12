@@ -8,6 +8,9 @@ import com.wutsi.stream.Event
 import org.slf4j.LoggerFactory
 import org.springframework.context.event.EventListener
 import java.util.Collections
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+import javax.annotation.PostConstruct
 
 class SiteProvider(
     private val api: SiteApi,
@@ -15,6 +18,7 @@ class SiteProvider(
 ) {
     companion object {
         private val LOGGER = LoggerFactory.getLogger(SiteProvider::class.java)
+        private const val LIMIT: Int = 1
     }
 
     fun get(id: Long): Site {
@@ -41,5 +45,30 @@ class SiteProvider(
             LOGGER.info("Caching Site#${payload.siteId}")
             get(payload.siteId)
         }
+    }
+
+    @PostConstruct
+    fun init() {
+        LOGGER.info("Loading all sites....")
+        val executor = Executors.newSingleThreadExecutor()
+        val task = Runnable { loadAllSites(executor) }
+        executor.submit(task)
+    }
+
+    private fun loadAllSites(executor: ExecutorService) {
+        var offset = 0
+        while (true) {
+            val sites = api.search(offset = offset, limit = LIMIT).sites
+            sites.forEach {
+                LOGGER.info("Caching Site#${it.id}")
+                get(it.id)
+            }
+
+            if (sites.size < LIMIT)
+                break
+            else
+                offset += sites.size
+        }
+        executor.shutdownNow()
     }
 }
