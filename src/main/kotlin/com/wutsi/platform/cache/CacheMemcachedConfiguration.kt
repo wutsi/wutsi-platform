@@ -15,13 +15,13 @@ import org.springframework.context.annotation.Configuration
     havingValue = "true"
 )
 open class CacheMemcachedConfiguration(
-    @Value(value = "\${memcached.username}")
+    @Value(value = "\${wutsi.memcached.username}")
     private val username: String,
-    @Value(value = "\${memcached.password}")
+    @Value(value = "\${wutsi.memcached.password}")
     private val password: String,
-    @Value(value = "\${memcached.servers}")
+    @Value(value = "\${wutsi.memcached.servers}")
     private val servers: String,
-    @Value(value = "\${memcached.ttl}")
+    @Value(value = "\${wutsi.memcached.ttl}")
     private val ttl: Int
 ) {
     @Bean
