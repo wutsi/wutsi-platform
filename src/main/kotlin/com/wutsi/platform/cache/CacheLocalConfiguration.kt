@@ -8,8 +8,7 @@ import org.springframework.context.`annotation`.Configuration
 @Configuration
 @ConditionalOnProperty(
     value = ["wutsi.memcached.enabled"],
-    havingValue = "false",
-    matchIfMissing = true
+    havingValue = "false"
 )
 open class CacheLocalConfiguration {
     @Bean
