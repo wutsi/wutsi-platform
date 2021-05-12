@@ -25,16 +25,16 @@ open class MQueueRabbitMQConfiguration(
     @Autowired
     private val eventPublisher: ApplicationEventPublisher,
 
-    @Value(value = "\${rabbitmq.url}")
+    @Value(value = "\${wutsi.rabbitmq.url}")
     private val url: String,
 
-    @Value(value = "\${rabbitmq.thread-pool-size}")
+    @Value(value = "\${wutsi.rabbitmq.thread-pool-size}")
     private val threadPoolSize: Int,
 
-    @Value(value = "\${rabbitmq.max-retries}")
+    @Value(value = "\${wutsi.rabbitmq.max-retries}")
     private val maxRetries: Int,
 
-    @Value(value = "\${rabbitmq.queue-ttl-seconds}")
+    @Value(value = "\${wutsi.rabbitmq.queue-ttl-seconds}")
     private val queueTtlSeconds: Long,
 
     @Value("\${wutsi.client-id}")
