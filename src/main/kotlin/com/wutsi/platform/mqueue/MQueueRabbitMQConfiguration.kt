@@ -73,7 +73,7 @@ open class MQueueRabbitMQConfiguration(
     open fun rabbitMQHealthIndicator(): HealthIndicator =
         com.wutsi.stream.rabbitmq.RabbitMQHealthIndicator(channel())
 
-    @Scheduled(cron = "\${rabbitmq.replay-cron}")
+    @Scheduled(cron = "\${wutsi.rabbitmq.replay-cron}")
     public fun replayDlq() {
         (eventStream() as RabbitMQEventStream).replayDlq()
     }
