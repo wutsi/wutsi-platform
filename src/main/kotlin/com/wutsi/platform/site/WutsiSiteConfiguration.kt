@@ -17,7 +17,7 @@ import org.springframework.core.env.Profiles
 @Configuration
 @ConditionalOnProperty(
     value = ["wutsi.platform.disable.SiteConfiguration"],
-    havingValue = "true",
+    havingValue = "false",
     matchIfMissing = true
 )
 open class WutsiSiteConfiguration(

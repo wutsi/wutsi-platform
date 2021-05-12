@@ -24,7 +24,7 @@ import org.springframework.core.env.Environment
 @Configuration
 @ConditionalOnProperty(
     value = ["wutsi.platform.disable.SecurityConfiguration"],
-    havingValue = "true",
+    havingValue = "false",
     matchIfMissing = true
 )
 open class WutsiSecurityConfiguration(
