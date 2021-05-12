@@ -57,7 +57,7 @@ open class WutsiSecurityConfiguration(
     )
 
     @Bean
-    open fun apiKeyProvider(): ApiKeyProvider = ApiKeyProvider(securityApi())
+    open fun apiKeyProvider(): ApiKeyProvider = ApiKeyProvider(securityApi(), apiKeyContext())
 
     @Bean
     open fun securitySubscription(): EventSubscription =

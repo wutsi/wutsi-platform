@@ -1,5 +1,6 @@
 package com.wutsi.platform.site
 
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.never
@@ -7,7 +8,9 @@ import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.wutsi.site.SiteApi
 import com.wutsi.site.dto.GetSiteResponse
+import com.wutsi.site.dto.SearchSiteResponse
 import com.wutsi.site.dto.Site
+import com.wutsi.site.dto.SiteSummary
 import com.wutsi.site.event.SiteEventType
 import com.wutsi.site.event.SiteEventType.SITE_CREATED
 import com.wutsi.site.event.SiteEventType.SITE_UPDATED
@@ -28,8 +31,6 @@ internal class SiteProviderTest {
         api = mock()
         cache = mock()
         provider = SiteProvider(api, cache)
-
-        cache.clear()
     }
 
     @Test
@@ -40,6 +41,7 @@ internal class SiteProviderTest {
         val result = provider.get(1L)
 
         assertEquals(site, result)
+        verify(cache).put(1L, site)
     }
 
     @Test
@@ -72,7 +74,30 @@ internal class SiteProviderTest {
         verify(cache).remove(1L)
     }
 
+    @Test
+    fun `preload sites`() {
+        val sumaries = listOf(createSiteSummary(1), createSiteSummary(2))
+        doReturn(SearchSiteResponse(sumaries))
+            .doReturn(SearchSiteResponse())
+            .whenever(api).search(any(), any())
+
+        val site1 = createSite(1)
+        val site2 = createSite(2)
+        doReturn(GetSiteResponse(site1)).whenever(api).get(1L)
+        doReturn(GetSiteResponse(site2)).whenever(api).get(2L)
+
+        provider.init()
+
+        Thread.sleep(1000)
+        verify(cache).put(1L, site1)
+        verify(cache).put(2L, site2)
+    }
+
     private fun createSite(id: Long = 1) = Site(
+        id = id
+    )
+
+    private fun createSiteSummary(id: Long = 1) = SiteSummary(
         id = id
     )
 

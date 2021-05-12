@@ -59,15 +59,14 @@ class SiteProvider(
         var offset = 0
         while (true) {
             val sites = api.search(offset = offset, limit = LIMIT).sites
-            sites.forEach {
-                LOGGER.info("Caching Site#${it.id}")
-                get(it.id)
-            }
-
-            if (sites.size < LIMIT)
+            if (sites.isEmpty())
                 break
-            else
-                offset += sites.size
+
+            sites.forEach {
+                get(it.id)
+                LOGGER.info("Site#${it.id} cached")
+            }
+            offset += sites.size
         }
         executor.shutdownNow()
     }
