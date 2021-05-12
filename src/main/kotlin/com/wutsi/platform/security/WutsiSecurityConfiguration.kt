@@ -15,12 +15,18 @@ import com.wutsi.stream.EventSubscription
 import com.wutsi.tracing.TracingRequestInterceptor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.env.Environment
 
 @Configuration
+@ConditionalOnProperty(
+    value = ["wutsi.platform.disable.SecurityConfiguration"],
+    havingValue = "true",
+    matchIfMissing = true
+)
 open class WutsiSecurityConfiguration(
     @Autowired
     private val context: ApplicationContext,
@@ -37,7 +43,7 @@ open class WutsiSecurityConfiguration(
     @Autowired
     private val eventStream: EventStream,
 
-    @Value(value = "\${security.api-key.id}")
+    @Value(value = "\${wutsi.security.api-key.id}")
     private val apiKeyId: String,
 ) {
     @Bean

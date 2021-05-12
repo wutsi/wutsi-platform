@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @ConditionalOnProperty(
-    value = ["memcached.enabled"],
+    value = ["wutsi.memcached.enabled"],
     havingValue = "true"
 )
 open class CacheMemcachedConfiguration(

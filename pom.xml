@@ -42,7 +42,7 @@
   </properties>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/wutsi/wutsi-site.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/wutsi/wutsi-platform.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -50,7 +50,7 @@
     <repository>
       <id>github</id>
       <name>GitHub Maven Packages</name>
-      <url>https://maven.pkg.github.com/wutsi/wutsi-site</url>
+      <url>https://maven.pkg.github.com/wutsi/wutsi-platform</url>
     </repository>
   </distributionManagement>
 

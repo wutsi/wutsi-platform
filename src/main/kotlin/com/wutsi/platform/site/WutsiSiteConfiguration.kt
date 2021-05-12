@@ -8,12 +8,18 @@ import com.wutsi.site.SiteApi
 import com.wutsi.site.SiteApiBuilder
 import com.wutsi.tracing.TracingRequestInterceptor
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.env.Environment
 import org.springframework.core.env.Profiles
 
 @Configuration
+@ConditionalOnProperty(
+    value = ["wutsi.platform.disable.SiteConfiguration"],
+    havingValue = "true",
+    matchIfMissing = true
+)
 open class WutsiSiteConfiguration(
     @Autowired private val env: Environment,
     @Autowired private val mapper: ObjectMapper,

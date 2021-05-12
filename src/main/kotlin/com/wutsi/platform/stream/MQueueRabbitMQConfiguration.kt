@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutorService
 
 @Configuration
 @ConditionalOnProperty(
-    value = ["rabbitmq.enabled"],
+    value = ["wutsi.rabbitmq.enabled"],
     havingValue = "true"
 )
 open class MQueueRabbitMQConfiguration(
