@@ -21,7 +21,7 @@ open class CacheMemcachedConfiguration(
     private val password: String,
     @Value(value = "\${wutsi.memcached.servers}")
     private val servers: String,
-    @Value(value = "\${wutsi.memcached.ttl}")
+    @Value(value = "\${wutsi.memcached.ttl:86400}")
     private val ttl: Int
 ) {
     @Bean
