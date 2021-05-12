@@ -25,20 +25,20 @@ open class MQueueRabbitMQConfiguration(
     @Autowired
     private val eventPublisher: ApplicationEventPublisher,
 
+    @Value("\${wutsi.client-id}")
+    private val clientId: String,
+
     @Value(value = "\${wutsi.rabbitmq.url}")
     private val url: String,
 
-    @Value(value = "\${wutsi.rabbitmq.thread-pool-size}")
+    @Value(value = "\${wutsi.rabbitmq.thread-pool-size:8}")
     private val threadPoolSize: Int,
 
-    @Value(value = "\${wutsi.rabbitmq.max-retries}")
+    @Value(value = "\${wutsi.rabbitmq.max-retries:3}")
     private val maxRetries: Int,
 
-    @Value(value = "\${wutsi.rabbitmq.queue-ttl-seconds}")
-    private val queueTtlSeconds: Long,
-
-    @Value("\${wutsi.client-id}")
-    private val clientId: String
+    @Value(value = "\${wutsi.rabbitmq.queue-ttl-seconds:84600}")
+    private val queueTtlSeconds: Long
 ) {
     @Bean
     open fun connectionFactory(): ConnectionFactory {

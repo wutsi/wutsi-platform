@@ -15,7 +15,8 @@ import java.io.File
 @Configuration
 @ConditionalOnProperty(
     value = ["wutsi.rabbitmq.enabled"],
-    havingValue = "false"
+    havingValue = "false",
+    matchIfMissing = true
 )
 open class MQueueLocalConfiguration(
     @Autowired
