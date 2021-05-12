@@ -37,7 +37,7 @@ open class MQueueRabbitMQConfiguration(
     @Value(value = "\${wutsi.rabbitmq.max-retries:3}")
     private val maxRetries: Int,
 
-    @Value(value = "\${wutsi.rabbitmq.queue-ttl-seconds:84600}")
+    @Value(value = "\${wutsi.rabbitmq.queue-ttl-seconds:86400}")
     private val queueTtlSeconds: Long
 ) {
     @Bean
@@ -73,7 +73,7 @@ open class MQueueRabbitMQConfiguration(
     open fun rabbitMQHealthIndicator(): HealthIndicator =
         com.wutsi.stream.rabbitmq.RabbitMQHealthIndicator(channel())
 
-    @Scheduled(cron = "\${wutsi.rabbitmq.replay-cron}")
+    @Scheduled(cron = "\${wutsi.rabbitmq.replay-cron:0 */15 * * * *}")
     public fun replayDlq() {
         (eventStream() as RabbitMQEventStream).replayDlq()
     }
