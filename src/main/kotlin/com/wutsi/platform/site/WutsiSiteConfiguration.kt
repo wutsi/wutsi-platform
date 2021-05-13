@@ -8,7 +8,6 @@ import com.wutsi.site.SiteApi
 import com.wutsi.site.SiteApiBuilder
 import com.wutsi.tracing.TracingRequestInterceptor
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.env.Environment
@@ -22,10 +21,6 @@ open class WutsiSiteConfiguration(
     @Autowired private val apiKeyRequestInterceptor: ApiKeyRequestInterceptor
 ) {
     @Bean
-    @ConditionalOnProperty(
-        value = ["wutsi.platform.providers.SiteProvider"],
-        havingValue = "true"
-    )
     open fun siteProvider(): SiteProvider =
         SiteProvider(siteApi())
 
