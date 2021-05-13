@@ -15,11 +15,6 @@ import org.springframework.core.env.Environment
 import org.springframework.core.env.Profiles
 
 @Configuration
-@ConditionalOnProperty(
-    value = ["wutsi.platform.disable.SiteConfiguration"],
-    havingValue = "false",
-    matchIfMissing = true
-)
 open class WutsiSiteConfiguration(
     @Autowired private val env: Environment,
     @Autowired private val mapper: ObjectMapper,
@@ -27,6 +22,10 @@ open class WutsiSiteConfiguration(
     @Autowired private val apiKeyRequestInterceptor: ApiKeyRequestInterceptor
 ) {
     @Bean
+    @ConditionalOnProperty(
+        value = ["wutsi.platform.providers.SiteProvider"],
+        havingValue = "true"
+    )
     open fun siteProvider(): SiteProvider =
         SiteProvider(siteApi())
 
