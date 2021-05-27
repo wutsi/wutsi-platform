@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import javax.annotation.PostConstruct
 
-class SiteProvider(
+open class SiteProvider(
     private val api: SiteApi,
     private val cache: MutableMap<Long, Site> = Collections.synchronizedMap(mutableMapOf())
 ) {
@@ -21,7 +21,7 @@ class SiteProvider(
         private const val LIMIT: Int = 1
     }
 
-    fun get(id: Long): Site {
+    open fun get(id: Long): Site {
         var site = cache[id]
         if (site == null) {
             site = api.get(id).site
