@@ -34,6 +34,29 @@ internal class SiteProviderTest {
     }
 
     @Test
+    fun `return all sites`() {
+        val sumaries = listOf(createSiteSummary(1), createSiteSummary(2))
+        doReturn(SearchSiteResponse(sumaries))
+            .doReturn(SearchSiteResponse())
+            .whenever(api).search(any(), any())
+
+        val site1 = createSite(1)
+        val site2 = createSite(2)
+        doReturn(GetSiteResponse(site1)).whenever(api).get(1L)
+        doReturn(GetSiteResponse(site2)).whenever(api).get(2L)
+
+        provider = SiteProvider(api)
+        provider.init()
+        Thread.sleep(1000)
+
+        val sites = provider.all()
+
+        assertEquals(2, sites.size)
+        assertEquals(site1, sites[0])
+        assertEquals(site2, sites[1])
+    }
+
+    @Test
     fun `resolve Site from api`() {
         val site = createSite(id = 1)
         doReturn(GetSiteResponse(site)).whenever(api).get(1L)

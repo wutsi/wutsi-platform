@@ -30,6 +30,9 @@ open class SiteProvider(
         return site
     }
 
+    open fun all(): List<Site> =
+        cache.values.toList()
+
     @EventListener
     fun onEvent(event: Event) {
         LOGGER.info("onEvent(${event.type}, ...)")
