@@ -31,7 +31,7 @@
     <kotlin.code.style>official</kotlin.code.style>
     <kotlin.compiler.jvmTarget>11</kotlin.compiler.jvmTarget>
 
-    <feign.version>11.3</feign.version>
+    <feign.version>11.4</feign.version>
     <wutsi-email-sdk.version>1.4.0</wutsi-email-sdk.version>
     <wutsi-spring-memcached.version>1.1.0</wutsi-spring-memcached.version>
     <wutsi-stream-rabbitmq.version>1.7.0</wutsi-stream-rabbitmq.version>
