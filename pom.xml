@@ -13,7 +13,7 @@
     <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
     <jacoco.threshold.line>0.0</jacoco.threshold.line>
     <jacoco.threshold.class>0.0</jacoco.threshold.class>
-    <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
+    <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 
     <junit.version>5.8.2</junit.version>
     <klint.version>0.46.1</klint.version>
