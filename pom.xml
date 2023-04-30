@@ -33,7 +33,6 @@
     <feign.version>11.9</feign.version>
     <wutsi-spring-memcached.version>1.1.0</wutsi-spring-memcached.version>
     <wutsi-stream-rabbitmq.version>1.7.0</wutsi-stream-rabbitmq.version>
-    <wutsi-security-sdk.version>1.1.0</wutsi-security-sdk.version>
     <wutsi-stream.version>1.5.2</wutsi-stream.version>
     <wutsi-tracing.version>1.5.1</wutsi-tracing.version>
   </properties>
@@ -67,11 +66,6 @@
       <groupId>com.wutsi</groupId>
       <artifactId>wutsi-spring-memcached</artifactId>
       <version>${wutsi-spring-memcached.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.wutsi.security</groupId>
-      <artifactId>security-sdk-kotlin</artifactId>
-      <version>${wutsi-security-sdk.version}</version>
     </dependency>
     <dependency>
       <groupId>com.wutsi.tracing</groupId>
