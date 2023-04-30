@@ -4,5 +4,7 @@
 [![](https://img.shields.io/badge/maven-3.6-brightgreen.svg)](https://maven.apache.org/download.cgi)
 ![](https://img.shields.io/badge/language-kotlin-blue.svg)
 
+
+
 # IMPORTANT
 This repo is no longer maintained. It has been deplored by [wutsi-platform-core](https://github.com/wutsi/wutsi-platform-core)
