@@ -10,7 +10,7 @@
   <name>wutsi-platform</name>
 
   <properties>
-    <jacoco-maven-plugin.version>0.8.9</jacoco-maven-plugin.version>
+    <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
     <jacoco.threshold.line>0.0</jacoco.threshold.line>
     <jacoco.threshold.class>0.0</jacoco.threshold.class>
     <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
